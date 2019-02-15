@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb-base",
+    "globals": {
+        "localStorage": true,
+        "fetch" : true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "linebreak-style": 0,
+        "import/prefer-default-export": "off"
+    }
+}
