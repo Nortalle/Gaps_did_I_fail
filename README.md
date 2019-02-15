@@ -43,18 +43,20 @@ node index.js
 And **voilà** :
 
 ```
-Nombre de modules réussis : 16
-   - SEC
-   - MAI
-   - MLO
-   - PRO
-   - SRL
-Nombre de cours réussis : 29
-   - Réseaux
-   - Sécurité des logiciels
-   - Programmation concurrente
-   - Systèmes d'exploitation
-   - Projet de semestre
+Nombre de modules réussis : 13
+Les 5 derniers modules réussis:
+   - ABC        4.0
+   - DEF        4.5
+   - GHI        4.5
+   - JKL        4.0
+   - MNO        4.5
+Nombre de cours réussis : 21
+Les 5 derniers cours réussis:
+   - Astronomie    4.3
+   - Botanique     4.2
+   - Défense contre les forces du Mal  3.7
+   - Histoire de la magie    4.2
+   - Métamorphose 3.8
 ```
 
 ##Links
