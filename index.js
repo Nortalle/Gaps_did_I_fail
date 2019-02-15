@@ -15,6 +15,8 @@ const login = process.env.LOGIN;
 const password = process.env.PASSWORD;
 const submit = 'Entrer';
 
+const numberToDisplay = 5;
+
 const params = {
     login,
     password,
@@ -34,11 +36,11 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
             .childNodes[3]// tbody
             .childNodes;
 
-        const lastFiveModule = [];
-        let lastFiveModuleId = 0;
+        const lastModules = [];
+        let nbrModules = 0;
 
-        const lastFiveCourse = [];
-        let lastFiveCourseId = 0;
+        const lastCourses = [];
+        let nbrCourses = 0;
 
         const size = tbodyChilds.length;
 
@@ -56,9 +58,9 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[1].childNodes[0] != null
                                     && current.childNodes[1].childNodes[0].value != null) {
                                     const { value } = current.childNodes[1].childNodes[0];
-                                    lastFiveModule[lastFiveModuleId % 5] = value;
+                                    lastModules[nbrModules % numberToDisplay] = value;
                                 }
-                                lastFiveModuleId += 1;
+                                nbrModules += 1;
                             }
                         } else if (currentTD.attrs[0].name === 'class' && currentTD.attrs[0].value === 'transcript-left') {
                             if (currentTD.childNodes[0] != null && (currentTD.childNodes[0].value.includes('ussite') || currentTD.childNodes[0].value.includes('Compens'))) {
@@ -68,9 +70,9 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[3].childNodes[0] != null
                                     && current.childNodes[3].childNodes[0].value != null) {
                                     const { value } = current.childNodes[3].childNodes[0];
-                                    lastFiveCourse[lastFiveCourseId % 5] = value;
+                                    lastCourses[nbrCourses % numberToDisplay] = value;
                                 }
-                                lastFiveCourseId += 1;
+                                nbrCourses += 1;
                             }
                         }
                     }
@@ -78,15 +80,18 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
             }
         }
 
-        console.log(`Nombre de modules réussis : ${lastFiveModuleId}`);
-        console.log('Les cinq derniers modules réussis:');
-        for (let i = 0; i < 5; i += 1) {
-            console.log(`   - ${lastFiveModule[i]}`);
+        const nbrModulesToDisplay = lastModules.length;
+        const nbrCoursesToDisplay = lastCourses.length;
+
+        console.log(`Nombre de modules réussis : ${nbrModules}`);
+        console.log(`Les ${nbrModulesToDisplay} derniers modules réussis:`);
+        for (let i = 0; i < nbrModulesToDisplay; i += 1) {
+            console.log(`   - ${lastModules[i]}`);
         }
-        console.log(`Nombre de cours réussis : ${lastFiveCourseId}`);
-        console.log('Les cinq derniers cours réussis:');
-        for (let i = 0; i < 5; i += 1) {
-            console.log(`   - ${lastFiveCourse[i]}`);
+        console.log(`Nombre de cours réussis : ${nbrCourses}`);
+        console.log(`Les ${nbrCoursesToDisplay} derniers cours réussis:`);
+        for (let i = 0; i < nbrCoursesToDisplay; i += 1) {
+            console.log(`   - ${lastCourses[i]}`);
         }
     })
     .catch((error) => {
