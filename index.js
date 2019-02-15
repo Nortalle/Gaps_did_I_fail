@@ -55,7 +55,7 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[1].childNodes != null
                                     && current.childNodes[1].childNodes[0] != null
                                     && current.childNodes[1].childNodes[0].value != null) {
-                                    const value = current.childNodes[1].childNodes[0].value;
+                                    const { value } = current.childNodes[1].childNodes[0];
                                     lastFiveModule[lastFiveModuleId % 5] = value;
                                 }
                                 lastFiveModuleId += 1;
@@ -67,7 +67,7 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[3].childNodes != null
                                     && current.childNodes[3].childNodes[0] != null
                                     && current.childNodes[3].childNodes[0].value != null) {
-                                    const value = current.childNodes[3].childNodes[0].value;
+                                    const { value } = current.childNodes[3].childNodes[0];
                                     lastFiveCourse[lastFiveCourseId % 5] = value;
                                 }
                                 lastFiveCourseId += 1;
