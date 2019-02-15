@@ -50,10 +50,10 @@ Nombre de modules réussis : 16
    - PRO
    - SRL
 Nombre de cours réussis : 29
-   - R�seaux
-   - S�curit� des logiciels
+   - Réseaux
+   - Sécurité des logiciels
    - Programmation concurrente
-   - Syst�mes d'exploitation
+   - Systèmes d'exploitation
    - Projet de semestre
 ```
 
