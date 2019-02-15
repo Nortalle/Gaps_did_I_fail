@@ -51,12 +51,24 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                     if (currentTD.attrs != null && currentTD.attrs[0] != null) {
                         if (currentTD.attrs[0].name === 'class' && currentTD.attrs[0].value === 'transcript-left transcript-status') {
                             if (currentTD.childNodes[0] != null && currentTD.childNodes[0].value.includes('ussite')) {
-                                lastFiveModule[lastFiveModuleId % 5] = current.childNodes[1].childNodes[0].value;
+                                if (current.childNodes != null
+                                    && current.childNodes[1] != null
+                                    && current.childNodes[1].childNodes != null
+                                    && current.childNodes[1].childNodes[0] != null
+                                    && current.childNodes[1].childNodes[0].value != null) {
+                                    lastFiveModule[lastFiveModuleId % 5] = current.childNodes[1].childNodes[0].value;
+                                }
                                 lastFiveModuleId++;
                             }
                         } else if (currentTD.attrs[0].name === 'class' && currentTD.attrs[0].value === 'transcript-left') {
                             if (currentTD.childNodes[0] != null && (currentTD.childNodes[0].value.includes('ussite') || currentTD.childNodes[0].value.includes('Compens'))) {
-                                lastFiveCourse[lastFiveCourseId % 5] = current.childNodes[3].childNodes[0].value;
+                                if (current.childNodes != null
+                                    && current.childNodes[3] != null
+                                    && current.childNodes[3].childNodes != null
+                                    && current.childNodes[3].childNodes[0] != null
+                                    && current.childNodes[3].childNodes[0].value != null) {
+                                    lastFiveCourse[lastFiveCourseId % 5] = current.childNodes[3].childNodes[0].value;
+                                }
                                 lastFiveCourseId++;
                             }
                         }
