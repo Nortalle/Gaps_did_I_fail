@@ -10,8 +10,8 @@ This programm let you know the five last modules and the last five courses you a
 
 You need to download the repo and go **inside**:
 
-```javascript
-git clone 
+```
+git clone https://github.com/Nortalle/Gaps_did_I_fail.git
 cd Gaps_did_I_fail
 ```
 
