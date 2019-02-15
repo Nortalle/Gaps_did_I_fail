@@ -1,4 +1,4 @@
-#Gaps - Did I fail ?
+# Gaps - Did I fail ?
 
 Vincent Guidoux
 
@@ -10,8 +10,8 @@ This programm let you know the five last modules and the last five courses you a
 
 You need to download the repo and go **inside**:
 
-```javascript
-git clone 
+```
+git clone https://github.com/Nortalle/Gaps_did_I_fail.git
 cd Gaps_did_I_fail
 ```
 
@@ -50,9 +50,16 @@ Nombre de modules réussis : 16
    - PRO
    - SRL
 Nombre de cours réussis : 29
-   - R�seaux
-   - S�curit� des logiciels
+   - Réseaux
+   - Sécurité des logiciels
    - Programmation concurrente
-   - Syst�mes d'exploitation
+   - Systèmes d'exploitation
    - Projet de semestre
 ```
+
+##Links
+
+[HTTP Parser/viewer](https://astexplorer.net/#/)
+
+[Parse5 Documentation](https://github.com/inikulin/parse5/blob/master/packages/parse5/docs/index.md)
+
