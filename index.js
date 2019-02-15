@@ -1,4 +1,3 @@
-
 const envFile = require('find-config')('.env');
 const querystring = require('querystring');
 const parse5 = require('parse5');
@@ -43,7 +42,7 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
 
         const size = tbodyChilds.length;
 
-        for (let i = 0; i < size; i++) {
+        for (let i = 0; i < size; i += 1) {
             const current = tbodyChilds[i];
             if (current.nodeName === 'tr') {
                 if (current.childNodes[5] != null && current.childNodes[5].nodeName === 'td') {
@@ -56,9 +55,10 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[1].childNodes != null
                                     && current.childNodes[1].childNodes[0] != null
                                     && current.childNodes[1].childNodes[0].value != null) {
-                                    lastFiveModule[lastFiveModuleId % 5] = current.childNodes[1].childNodes[0].value;
+                                    const { value } = current.childNodes[1].childNodes[0].value;
+                                    lastFiveModule[lastFiveModuleId % 5] = value;
                                 }
-                                lastFiveModuleId++;
+                                lastFiveModuleId += 1;
                             }
                         } else if (currentTD.attrs[0].name === 'class' && currentTD.attrs[0].value === 'transcript-left') {
                             if (currentTD.childNodes[0] != null && (currentTD.childNodes[0].value.includes('ussite') || currentTD.childNodes[0].value.includes('Compens'))) {
@@ -67,9 +67,10 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[3].childNodes != null
                                     && current.childNodes[3].childNodes[0] != null
                                     && current.childNodes[3].childNodes[0].value != null) {
-                                    lastFiveCourse[lastFiveCourseId % 5] = current.childNodes[3].childNodes[0].value;
+                                    const { value } = current.childNodes[3].childNodes[0].value;
+                                    lastFiveCourse[lastFiveCourseId % 5] = value;
                                 }
-                                lastFiveCourseId++;
+                                lastFiveCourseId += 1;
                             }
                         }
                     }
@@ -78,13 +79,13 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
         }
 
         console.log(`Nombre de modules réussis : ${lastFiveModuleId}`);
-        console.log(`Les cinq derniers modules réussis:`);
-        for (let i = 0; i < 5; i++) {
+        console.log('Les cinq derniers modules réussis:');
+        for (let i = 0; i < 5; i += 1) {
             console.log(`   - ${lastFiveModule[i]}`);
         }
         console.log(`Nombre de cours réussis : ${lastFiveCourseId}`);
-        console.log(`Les cinq derniers cours réussis:`);
-        for (let i = 0; i < 5; i++) {
+        console.log('Les cinq derniers cours réussis:');
+        for (let i = 0; i < 5; i += 1) {
             console.log(`   - ${lastFiveCourse[i]}`);
         }
     })
