@@ -60,6 +60,14 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     const { value } = current.childNodes[1].childNodes[0];
                                     lastModules[nbrModules % numberToDisplay] = value;
                                 }
+                                if (current.childNodes != null
+                                    && current.childNodes[7] != null
+                                    && current.childNodes[7].childNodes != null
+                                    && current.childNodes[7].childNodes[0] != null
+                                    && current.childNodes[7].childNodes[0].value != null) {
+                                    const { value } = current.childNodes[7].childNodes[0];
+                                    lastModules[nbrModules % numberToDisplay] += `\t${value}`;
+                                }
                                 nbrModules += 1;
                             }
                         } else if (currentTD.attrs[0].name === 'class' && currentTD.attrs[0].value === 'transcript-left') {
@@ -71,6 +79,14 @@ client.post(`/consultation/notes/bulletin.php?id=${process.env.ID}`, querystring
                                     && current.childNodes[3].childNodes[0].value != null) {
                                     const { value } = current.childNodes[3].childNodes[0];
                                     lastCourses[nbrCourses % numberToDisplay] = value;
+                                }
+                                if (current.childNodes != null
+                                    && current.childNodes[7] != null
+                                    && current.childNodes[7].childNodes != null
+                                    && current.childNodes[7].childNodes[0] != null
+                                    && current.childNodes[7].childNodes[0].value != null) {
+                                    const { value } = current.childNodes[7].childNodes[0];
+                                    lastCourses[nbrCourses % numberToDisplay] += `\t${value}`;
                                 }
                                 nbrCourses += 1;
                             }
